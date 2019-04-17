@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 public class MyHeap {
 	
 	private static int getMax(int[] data, int one, int two) {
@@ -33,10 +33,15 @@ public class MyHeap {
 	
 	
 	public static void main(String[] args) {
-		int[] test = {1,6,3,2,87,4,2,31,165,16,4,16,14,15,31,1};
+		Random r = new Random(System.currentTimeMillis());
+		int size = Integer.parseInt(args[0]);
+		int[] test = new int[size];
+		for(int i = 0; i < test.length; i++) {
+			test[i] = Math.abs(r.nextInt() % 100);
+		}
+		long x = System.currentTimeMillis();
 		heapify(test);
-		System.out.println(Arrays.toString(test));
-		
+		System.out.println((System.currentTimeMillis() - x) + " milliseconds");
 		
 	}
 	
