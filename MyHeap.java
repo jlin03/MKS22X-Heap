@@ -54,22 +54,4 @@ public class MyHeap {
 	}
 	
 	
-	public static void main(String[] args) {
-		Random r = new Random(System.currentTimeMillis());
-		int size = Integer.parseInt(args[0]);
-		int[] test = new int[size];
-		int[] compare = new int[size];
-		for(int i = 0; i < test.length; i++) {
-			test[i] = Math.abs(r.nextInt() % 100);
-			compare[i] = test[i];
-		}
-		long x = System.currentTimeMillis();
-		heapsort(test);
-		System.out.println((System.currentTimeMillis() - x) + " milliseconds");
-		Arrays.sort(compare);
-		System.out.println(Arrays.equals(test,compare));
-		
-	}
-	
-	
 }
