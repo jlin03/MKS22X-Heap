@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class MyHeap {
 	
 	private static int getMax(int[] data, int one, int two) {
@@ -27,7 +28,13 @@ public class MyHeap {
 	
 	
 	
-	
+	public static void main(String[] args) {
+		int[] test = {1,6,3,2,87,4,2};
+		pushDown(test,test.length,0);
+		System.out.println(Arrays.toString(test));
+		
+		
+	}
 	
 	
 }
