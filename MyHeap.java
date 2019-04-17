@@ -1,4 +1,3 @@
-import java.util.*;
 public class MyHeap {
 	
 	private static int getMax(int[] data, int one, int two) {
@@ -18,17 +17,21 @@ public class MyHeap {
 	
 	private static void pushDown(int[] data, int size, int index) {
 		int next;
-		if(2*index + 2 <= size) {
-			next = getMax(data,2*index + 1,2*index + 2);
+		int left = 2*index + 1;
+		int right = 2*index + 2;
+		if(right <= size) {
+			next = getMax(data,left,right);
 		}
 		else { 
-			next = 2*index + 1;
+			next = left;
 		}
 		while(next <= size && data[next] > data[index]) {
 			swap(data,index,next);
 			index = next;
-			if(2*index + 2 < size) {
-				next = getMax(data,2*index + 1,2*index + 2);
+			left = 2*index + 1;
+			right = 2*index + 2;
+			if(right < size) {
+				next = getMax(data,left,right);
 			}
 			else { 
 				next = 2*index + 1;
