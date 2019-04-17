@@ -17,10 +17,14 @@ public class MyHeap {
 	}
 	
 	private static void pushDown(int[] data, int size, int index) {
-		while(2*index + 1 < size && (data[index] < data[2*index + 1] || data[index] < data[2*index + 2])) {
+		while(2*index + 1 < size-1 && (data[index] < data[2*index + 1] || data[index] < data[2*index + 2])) {
 			int next = getMax(data,2*index + 1,2*index + 2);
 			swap(data,index,next);
 			index = next;
+		}
+		if(size == 2) {
+			int next = getMax(data,index,2*index + 1);
+			swap(data,index,next);
 		}
 	}
 	
@@ -30,6 +34,17 @@ public class MyHeap {
 		}
 	}
 	
+	public static void heapsort(int[] data) {
+		heapify(data);
+		for(int i = data.length; i > 0; i--) {
+			pushDown(data,i,0);
+			System.out.println(Arrays.toString(data));
+			swap(data,0,i-1);
+			System.out.println(i);
+			System.out.println(Arrays.toString(data));
+			System.out.println();
+		}
+	}
 	
 	
 	public static void main(String[] args) {
@@ -40,7 +55,8 @@ public class MyHeap {
 			test[i] = Math.abs(r.nextInt() % 100);
 		}
 		long x = System.currentTimeMillis();
-		heapify(test);
+		heapsort(test);
+		System.out.println(Arrays.toString(test));
 		System.out.println((System.currentTimeMillis() - x) + " milliseconds");
 		
 	}
